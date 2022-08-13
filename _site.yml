@@ -1,0 +1,19 @@
+name: "DataViz-36613-Fall22"
+title: "CMU Data Viz 36-613"
+description: |
+  CMU Data Viz 36-613
+output_dir: "docs"
+include: ["slides/"]
+exclude: ["data/"]
+navbar:
+  right:
+    - icon: fab fa-github
+      href: https://github.com/ryurko/DataViz-36613-Fall22
+    - icon: fab fa-twitter
+      href: https://twitter.com/Stat_Ron
+    - icon: fas fa-user
+      href: https://www.stat.cmu.edu/~ryurko/
+output: 
+  distill::distill_article:
+    toc: true
+    css: styles.css

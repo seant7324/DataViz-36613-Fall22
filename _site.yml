@@ -2,7 +2,7 @@ name: "DataViz-36613-Fall22"
 title: "CMU Data Viz 36-613"
 description: |
   CMU Data Viz 36-613
-output_dir: "docs"
+output_dir: "_site"
 include: ["slides/"]
 exclude: ["data/"]
 navbar:

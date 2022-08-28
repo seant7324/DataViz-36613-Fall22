@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Presentation Ninja</title>
+    <title>36-613: Data Visualization</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Yihui Xie" />
-    <meta name="author" content="Garrick Aden-Buie" />
-    <meta name="date" content="2022-08-13" />
+    <meta name="author" content="Professor Ron Yurko" />
     <script src="libs/header-attrs/header-attrs.js"></script>
-    <script src="libs/htmlwidgets/htmlwidgets.js"></script>
-    <link href="libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
-    <script src="libs/datatables-binding/datatables.js"></script>
-    <script src="libs/jquery/jquery-3.6.0.min.js"></script>
-    <link href="libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <link href="libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
-    <script src="libs/dt-core/js/jquery.dataTables.min.js"></script>
-    <link href="libs/crosstalk/css/crosstalk.min.css" rel="stylesheet" />
-    <script src="libs/crosstalk/js/crosstalk.min.js"></script>
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -23,19 +20,16 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Presentation Ninja
+# 36-613: Data Visualization
 ]
 .subtitle[
-## ⚔️ xaringan +<br/>😎 xaringanthemer
+## Introduction and the Grammar of Graphics
 ]
 .author[
-### Yihui Xie
-]
-.author[
-### Garrick Aden-Buie
+### Professor Ron Yurko
 ]
 .date[
-### 2022-08-13
+### 8/29/2022
 ]
 
 ---
@@ -45,489 +39,414 @@ class: center, middle, inverse, title-slide
 
 
 
-## Typography
-
-Text can be **bold**, _italic_, ~~strikethrough~~, or `inline code`.
-
-[Link to another slide](#colors).
-
-### Lorem Ipsum
-
-Dolor imperdiet nostra sapien scelerisque praesent curae metus facilisis dignissim tortor. 
-Lacinia neque mollis nascetur neque urna velit bibendum. 
-Himenaeos suspendisse leo varius mus risus sagittis aliquet venenatis duis nec.
-
-- Dolor cubilia nostra nunc sodales
-
-- Consectetur aliquet mauris blandit
-
-- Ipsum dis nec porttitor urna sed
-
----
-name: colors
-
-## Colors
-
-.left-column[
-Text color
-
-[Link Color](#3)
-
-**Bold Color**
-
-_Italic Color_
-
-`Inline Code`
-]
-
-.right-column[
-Lorem ipsum dolor sit amet, [consectetur adipiscing elit (link)](#3), 
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Erat nam at lectus urna.
-Pellentesque elit ullamcorper **dignissim cras tincidunt (bold)** lobortis feugiat. 
-_Eros donec ac odio tempor_ orci dapibus ultrices. 
-Id porta nibh venenatis cras sed felis eget velit aliquet.
-Aliquam id diam maecenas ultricies mi.
-Enim sit amet 
-`code_color("inline")`
-venenatis urna cursus eget nunc scelerisque viverra.
-]
-
----
-
-# Big Topic or Inverse Slides `#`
-
-## Slide Headings `##`
-
-### Sub-slide Headings `###`
-
-#### Bold Call-Out `####`
-
-This is a normal paragraph text. Only use header levels 1-4.
-
-##### Possible, but not recommended `#####`
-
-###### Definitely don't use h6 `######`
-
----
-
-# Left-Column Headings
-
-.left-column[
-## First
-
-## Second
-
-## Third
-]
-
-.right-column[
-Dolor quis aptent mus a dictum ultricies egestas.
-
-Amet egestas neque tempor fermentum proin massa!
-
-Dolor elementum fermentum pharetra lectus arcu pulvinar.
-]
-
----
-class: inverse center middle
-
-# Topic Changing Interstitial
-
---
-
-```
-class: inverse center middle
-```
-
----
-layout: true
-
-## Blocks
-
----
-
-### Blockquote
-
-&gt; This is a blockquote following a header.
-&gt;
-&gt; When something is important enough, you do it even if the odds are not in your favor.
-
----
-
-### Code Blocks
-
-#### R Code
-
-
-```r
-ggplot(gapminder) +
-  aes(x = gdpPercap, y = lifeExp, size = pop, color = country) +
-  geom_point() +
-  facet_wrap(~year)
-```
-
-#### JavaScript
-
-```js
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
----
-
-### More R Code
-
-
-```r
-dplyr::starwars %&gt;% dplyr::slice_sample(n = 4)
-```
-
----
-
-
-```r
-cli::cli_alert_success("It worked!")
-```
-
-```
-## ✔ It worked!
-```
-
---
-
-
-```r
-message("Just a friendly message")
-```
-
-```
-## Just a friendly message
-```
-
---
-
-
-```r
-warning("This could be bad...")
-```
-
-```
-## Warning: This could be bad...
-```
-
---
-
-
-```r
-stop("I hope you're sitting down for this")
-```
-
-```
-## Error in eval(expr, envir, enclos): I hope you're sitting down for this
-```
-
-
----
-layout: true
-
-## Tables
-
----
-exclude: false
-
-
-```r
-tibble::as_tibble(mtcars)
-```
-
-```
-## # A tibble: 32 × 11
-##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
-##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
-##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
-##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
-##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
-##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
-##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
-##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
-##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
-## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-## # … with 22 more rows
-## # ℹ Use `print(n = ...)` to see more rows
-```
-
----
-
-
-```r
-knitr::kable(head(mtcars), format = 'html')
-```
-
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; mpg &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; disp &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; hp &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; drat &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; wt &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; qsec &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; vs &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; am &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; gear &lt;/th&gt;
-   &lt;th style="text-align:right;"&gt; carb &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.90 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.620 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 16.46 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21.0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 160 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.90 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.875 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 17.02 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 22.8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 108 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 93 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.85 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.320 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.61 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 21.4 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 258 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 110 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.08 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.215 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 19.44 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.7 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 360 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 175 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.15 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.440 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 17.02 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Valiant &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 18.1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 225 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 105 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 2.76 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3.460 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 20.22 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
-   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
----
-exclude: false
-
-
-```r
-DT::datatable(head(mtcars), fillContainer = FALSE, options = list(pageLength = 4))
-```
-
-<div id="htmlwidget-bcd391ebf9a940f3608f" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-bcd391ebf9a940f3608f">{"x":{"filter":"none","vertical":false,"fillContainer":false,"data":[["Mazda RX4","Mazda RX4 Wag","Datsun 710","Hornet 4 Drive","Hornet Sportabout","Valiant"],[21,21,22.8,21.4,18.7,18.1],[6,6,4,6,8,6],[160,160,108,258,360,225],[110,110,93,110,175,105],[3.9,3.9,3.85,3.08,3.15,2.76],[2.62,2.875,2.32,3.215,3.44,3.46],[16.46,17.02,18.61,19.44,17.02,20.22],[0,0,1,1,0,1],[1,1,1,0,0,0],[4,4,4,3,3,3],[4,4,1,1,2,1]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>mpg<\/th>\n      <th>cyl<\/th>\n      <th>disp<\/th>\n      <th>hp<\/th>\n      <th>drat<\/th>\n      <th>wt<\/th>\n      <th>qsec<\/th>\n      <th>vs<\/th>\n      <th>am<\/th>\n      <th>gear<\/th>\n      <th>carb<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4,5,6,7,8,9,10,11]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
-
----
-layout: true
-
-## Lists
-
----
+## Who am I?
 
 .pull-left[
-#### Here is an unordered list:
 
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
+*   Assistant Teaching Professor
+
+*   Finished Phd in Statistics @ CMU in May 2022
+
+*   Previously BS in Statistics @ CMU in 2015
+
+*   Research interests: statistical genetics, selective inference, clustering, sparsity, statistics in sports
+
+
+*   Industry experience: briefly worked in finance before returning to grad school and also as data scientist in professional sports
 ]
+
+--
 
 .pull-right[
 
-#### And an ordered list:
+![Osborn](https://www.meme-arsenal.com/memes/985cf50f0f3a6ad462d072513394e0a0.jpg)
 
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
 ]
 
+
 ---
+name: quartet
 
-### And a nested list:
+## Do these [datasets](http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html) have anything in common?
 
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
+.center[![](https://d2f99xq7vri1nk.cloudfront.net/DataDino-600x455.gif)]
 
 ---
 
-### Nesting an ol in ul in an ol
+## __Always visualize your data__ before analyzing it!
 
-- level 1 item (ul)
-  1. level 2 item (ol)
-  1. level 2 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-- level 1 item (ul)
-  1. level 2 item (ol)
-  1. level 2 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-  1. level 4 item (ol)
-  1. level 4 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-- level 1 item (ul)
+.center[![](https://www.researchgate.net/profile/Arch_Woodside2/publication/285672900/figure/fig4/AS:305089983074309@1449750528742/Anscombes-quartet-of-different-XY-plots-of-four-data-sets-having-identical-averages.png)]
 
----
-layout: true
-
-## Plots
+Need to understand the interplay between graphics and statistical inference
 
 ---
 
+## Course Structure (READ THE SYLLABUS):
 
-```r
-library(ggplot2)
-(g &lt;- ggplot(mpg) + aes(hwy, cty, color = class) + geom_point())
+#### Monday / Wednesday = Lecture
+
++ Will include example code, all slides and additional `R` demos posted on https://cmu-36613.netlify.app/
+
++ Want class discussion - so __participate and ask questions__
+
+--
+
+#### 5 Weekly Homework Assignments due Wednesdays by 11:59 PM EST
+
++ Posted Wednesday mornings and due one week later
+
+--
+
+#### Two Graphics Critique / Replication of Data Viz in the Wild
+
++ Submit two graphics critique / replications (with pseudocode) of data visualizations
+you find in the wild (see syllabus for due dates)
+
++ Both data visualizations must be from a __recent source that was posted online within the past month__
+
+--
+
+#### Group EDA Project due Friday October 14th by 11:59 PM EST
+
++ Each group will write an IMRD report and present their work in 36-611
+
+---
+
+## Course Objectives (READ THE SYLLABUS):
+
+### Learn useful principles for making appropriate statistical graphics.
+
+### Critique existing graphs and remake better ones.
+
+--
+
+### Visualize statistical analyses to facilitate communication.
+
+### Pinpoint the statistical claims you can/cannot make from graphics.
+
+--
+
+### Practice tidy data manipulation in `R` using the `tidyverse`
+
+### Practice reproducible workflows with `RMarkdown`
+
+---
+
+## What do I mean by `tidy` data?
+
+Data are often stored in __tabular__ (or matrix) form:
+
+
+```
+## # A tibble: 5 × 8
+##   species island    bill_length_mm bill_depth_mm flipper_length_mm body_m…¹ sex    year
+##   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;    &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+## 1 Adelie  Torgersen           39.1          18.7               181     3750 male   2007
+## 2 Adelie  Torgersen           39.5          17.4               186     3800 fema…  2007
+## 3 Adelie  Torgersen           40.3          18                 195     3250 fema…  2007
+## 4 Adelie  Torgersen           NA            NA                  NA       NA &lt;NA&gt;   2007
+## 5 Adelie  Torgersen           36.7          19.3               193     3450 fema…  2007
+## # … with abbreviated variable name ¹​body_mass_g
 ```
 
-&lt;img src="figs/Lec1/plot-example-1.png" width="100%" /&gt;
+--
+
++ Each row `==` unit of observation, e.g., penguins
+
+--
+
++ Each column `==` variable/measurement about each observation, e.g., `flipper_length_mm`
+
+--
+
++ Known as a `data.frame` in base `R` and `tibble` in the `tidyverse`
+
+--
+
++ Two main variable types: quantitative and categorical
+
+--
+
+__How do we convert data into visualizations?__
 
 ---
 
-
-```r
-g + xaringanthemer::theme_xaringan(text_font_size = 16, title_font_size = 18) +
-  ggtitle("A Plot About Cars")
-```
-
-.footnote[Requires `{showtext}`]
-
----
-layout: false
-
-## Square image
-
-&lt;center&gt;&lt;img src="https://octodex.github.com/images/labtocat.png" alt="GithHub Octocat" height="400px" /&gt;&lt;/center&gt;
-
-.footnote[GitHub Octocat]
-
----
-
-### Wide image
-
-![A wide image with a diagram of branching in git.](https://docs.github.com/assets/images/help/repository/branching.png)
-
-.footnote[Wide images scale to 100% slide width]
-
----
-
-## Two images
+## [The Grammar of Graphics](https://link.springer.com/book/10.1007/0-387-28695-0) - by Leland Wilkinson
 
 .pull-left[
-![A GitHub Octocat, style "mother hubber"](https://octodex.github.com/images/motherhubbertocat.png)
+
+All plots can be broken down into core components
+
+1. __data__
+
+2. __geometries__: type of geometric objects to represent data, e.g., points, lines
+
+3. __aesthetics__: visual characteristics of geometric objects to represent data, e.g., position, size
+
+4. __scales__: how each aesthetic is converted into values on the graph, e.g., color scales
+
+5. __stats__: statistical transformations to  summarize data, e.g., counts, means, regression lines
+
+6. __facets__: split data and view as multiple graphs
+
+7. __coordinate system__: 2D space the data are projected onto, e.g., Cartesian coordinates
+
+
 ]
 
+--
+
 .pull-right[
-![A GitHub Octocat, style "dinotcat"](https://octodex.github.com/images/dinotocat.png)
+
+[Hadley Wickham](http://hadley.nz/) [expanded upon this](http://vita.had.co.nz/papers/layered-grammar.pdf) with  [`ggplot2`](https://ggplot2.tidyverse.org/)
+
+1. `data`
+
+2. `geom`
+
+3. `aes`: mappings of columns to geometric objects
+
+4. `scale`: one scale for each `aes` variable
+
+5. `stat`
+
+6. `facet`
+
+7. `coord`
+
+8. `labs`: labels/guides for each variable and other parts of the plot, e.g., title, subtitle, caption
+
+9. `theme`: customization of plot layout
+
+
 ]
 
 ---
 
-### Definition lists can be used with HTML syntax.
+## Start with the `data`
 
-&lt;dl&gt;
-&lt;dt&gt;Name&lt;/dt&gt;
-&lt;dd&gt;Godzilla&lt;/dd&gt;
-&lt;dt&gt;Born&lt;/dt&gt;
-&lt;dd&gt;1952&lt;/dd&gt;
-&lt;dt&gt;Birthplace&lt;/dt&gt;
-&lt;dd&gt;Japan&lt;/dd&gt;
-&lt;dt&gt;Color&lt;/dt&gt;
-&lt;dd&gt;Green&lt;/dd&gt;
-&lt;/dl&gt;
+.pull-left[
+
+Access `ggplot2` from the `tidyverse`:
+
+
+```r
+library(tidyverse)
+*ggplot(data = penguins)
+```
+
+
+Or equivalently using `%&gt;%`:
+
+
+```r
+*penguins %&gt;%
+  ggplot()
+```
+
+
+]
+
+--
+
+.pull-right[
+
+__Nothing is displayed__
+
+&lt;img src="figs/Lec1/unnamed-chunk-3-1.png" width="100%" /&gt;
+
+]
+
+---
+
+## Add geometric object with columns mapped to aesthetics
+
+
+.pull-left[
+
++ Use the `+` operator in `ggplot` to add layers
+
++ Map `bill_length_mm` to x-axis and `bill_depth_mm` to y-axis
+
+
+```r
+penguins %&gt;%
+* ggplot(aes(x = bill_length_mm,
+*            y = bill_depth_mm)) +
+* geom_point()
+```
+
++ NOTE we are implicitly saying:
+
+
+```r
+penguins %&gt;%
+* ggplot(mapping = aes(x = bill_length_mm,
+                       y = bill_depth_mm)) + 
+  geom_point() 
+```
+
+
+]
+
+--
+
+.pull-right[
+
+__And now we have a scatterplot!__
+
+&lt;img src="figs/Lec1/unnamed-chunk-5-1.png" width="100%" /&gt;
+
+]
+
+
+---
+
+## Modify scale, add statistical summary, and so on...
+
+.pull-left[
+
++ Adjust global aesthetics outside of `aes`
+
+
+```r
+penguins %&gt;%
+  ggplot(aes(x = bill_length_mm,
+             y = bill_depth_mm)) + 
+  # Adjust alpha of points
+* geom_point(alpha = 0.5) +
+  # Add smooth regression line
+* stat_smooth(method = "lm") +
+  # Flip the x-axis scale
+* scale_x_reverse() +
+  # Change title &amp; axes labels 
+* labs(x = "Bill length (mm)",
+*      y = "Bill depth (mm)",
+*      title = "Clustering of penguins bills") +
+  # Change the theme:
+* theme_bw()
+```
+
+
+]
+
+--
+
+.pull-right[
+
+__You will be covering more basics in HW1__
+
+&lt;img src="figs/Lec1/unnamed-chunk-6-1.png" width="100%" /&gt;
+
+]
+
+
+---
+
+## In the beginning...
+
+#### Michael Florent van Langren published the first (known) statistical graphic in 1644
+
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Grados_de_la_Longitud.jpg" width="60%" style="display: block; margin: auto;" /&gt;
+
++ Plots different estimates of the longitudinal distance between Toledo, Spain and Rome, Italy
+
++ i.e., visualization of collected data to aid in estimation of parameter
+
+--
+
+&lt;img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDU0fPHI7y9TstYN0hASi7wlDcBUDnNoTS8yNjXehDAZVJ17glqqGBI7Wxt6y_wdgyyw&amp;usqp=CAU" width="60%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## [John Snow](https://www.theguardian.com/news/datablog/2013/mar/15/john-snow-cholera-map) Knows Something About Cholera
+
+&lt;img src="https://media.nationalgeographic.org/assets/photos/000/276/27636.jpg" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## [Charles Minard's](https://www.datavis.ca/gallery/minard/minard.pdf) Map of Napoleon's Russian Disaster
+
+&lt;img src="https://datavizblog.files.wordpress.com/2013/05/map-full-size1.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## [Florence Nightingale's](https://www.datavis.ca/gallery/flo.php) Rose Diagram 
+
+&lt;img src="https://daily.jstor.org/wp-content/uploads/2020/08/florence_nightingagle_data_visualization_visionary_1050x700.jpg" width="75%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## [Milestones in Data Visualization History](https://friendly.github.io/HistDataVis/)
+
+&lt;img src="https://www.researchgate.net/profile/Michael-Friendly/publication/45858111/figure/fig1/AS:276894395191302@1443028176705/The-time-distribution-of-events-considered-milestones-in-the-history-of-data.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## How to Fail this Class:
+
+&lt;img src="https://socviz.co/assets/ch-01-chartjunk-life-expectancy.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## [Edward Tufte's](https://www.edwardtufte.com/tufte/) Principles of Data Visualization
+
+Graphics: visually display measured quantities by combining points, lines, coordinate systems, numbers, symbols, words, shading, color
+
+--
+
+#### Goal is to show data and/or communicate a story!
+
+--
+
++ Induce viewer to think about substance, __not graphical methodology__
+
++ Make large, complex datasets more coherent 
+
++ Encourage comparison of different pieces of data
+
++ __Describe, explore, and identify relationships__
+
++ __Avoid data distortion and data decoration__
+
++ Use consistent graph design
+
+--
+
+#### Avoid graphs that lead to misleading conclusions!
+
+---
+
+&lt;img src="https://github.com/ryurko/SURE22-examples/blob/main/figures/lecture_examples/nyt_ex.png?raw=true" width="110%" style="display: block; margin: auto;" /&gt;
+
+--
+
+#### [Think twice before you spiral](https://junkcharts.typepad.com/junk_charts/nyt/)
 
 ---
 class: center, middle
 
-# Thanks!
+# Next time: 1D categorical data
 
-Slides created via the R packages:
+Recommended reading: 
+
+[CW Chapter 2 Visualizing data: Mapping data onto aesthetics](https://clauswilke.com/dataviz/aesthetic-mapping.html)
+
+[CW Chapter 17 The principle of proportional ink](https://clauswilke.com/dataviz/proportional-ink.html)
+
+[KH Chapter 1 Look at data](https://socviz.co/lookatdata.html#lookatdata)
+
+[KH Chapter 3 Make a plot](https://socviz.co/makeplot.html#makeplot)
+
+
+Lecture slides created via the `R` packages:
 
 [**xaringan**](https://github.com/yihui/xaringan)&lt;br&gt;
 [gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
 
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -536,7 +455,7 @@ The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihu
 "highlightStyle": "github",
 "highlightLines": true,
 "ratio": "16:9",
-"countIncrementalSlides": true
+"countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

@@ -1,9 +1,9 @@
 name: "DataViz-36613-Fall22"
-title: "CMU Data Viz 36-613"
+title: "CMU 36-613"
 description: |
-  CMU Data Viz 36-613
+  Data Visualization
 output_dir: "_site"
-include: ["slides/"]
+include: ["slides/", "demos/"]
 exclude: ["data/"]
 navbar:
   right:

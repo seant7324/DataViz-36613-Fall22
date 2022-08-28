@@ -16,9 +16,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-## Course Objectives
-
-TBA
 
 ## Lectures
 

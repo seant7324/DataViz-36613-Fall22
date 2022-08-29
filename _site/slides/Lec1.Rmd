@@ -29,7 +29,6 @@ knitr::opts_chunk$set(
   fig.path = "figs/Lec1/"
 )
 xaringanExtra::use_scribble()
-xaringanExtra::use_clipboard()
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}

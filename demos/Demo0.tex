@@ -1,0 +1,409 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Installing R and RStudio},
+  pdfauthor={Sean Tavares},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Installing R and RStudio}
+\author{Sean Tavares}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{installing-r-and-rstudio}{%
+\section{Installing R and RStudio}\label{installing-r-and-rstudio}}
+
+For this course you'll need to download and install \texttt{R} and
+RStudio---all assignments will be using \texttt{R}, including the
+homeworks, graphics discussions, and project report.
+
+To download \texttt{R}, follow the instructions
+\href{https://cran.rstudio.com/}{here}. Be sure to choose the correct
+operating system, and 64-bit R if possible/compatible.
+
+After you've installed \texttt{R}, install RStudio by following the
+instructions
+\href{https://rstudio.com/products/rstudio/download/\#download}{here}.
+
+If you run into any issues with installing \texttt{R} or RStudio and/or
+opening RStudio on your computer, please post on Piazza describing the
+issue you're running into, and we'll do our best to help you ASAP.
+
+Once you get RStudio open, download the Demo0.Rmd file from Canvas and
+open it in RStudio (File / Open\ldots). When you open the .Rmd file,
+you'll notice several panes in RStudio. The most important pane is where
+the actual .Rmd file is (i.e., where this text is within RStudio),
+because this is where you'll type your answers to construct the final
+.Rmd and HTML file that you'll submit for homeworks.
+
+To get some practice writing text in the .Rmd file, scroll to the top of
+the .Rmd file where it says ``Your Name Here''. Replace ``Your Name
+Here'' with your name (\textbf{you should do this for all assignments}).
+After you've done this, look for the ``Knit'' button near the top of
+RStudio. Click the down-arrow there and click ``Knit to HTML''. This
+should generate an .html file with your name at the top. (This .html
+should be in the same place on your computer where your .Rmd file is)
+After you click the ``Knit to HTML'' button once, you can just click the
+``Knit'' button itself to keep updating the .html file; you can also use
+Cmd+Shift+K (Mac) or Ctrl+Shift+K (Windows/Linux).
+
+\textbf{Continue to the next part only after you've successfully changed
+the ``Your Name Here'' text and Knitted the .Rmd file to HTML.}
+
+\hypertarget{installing-packages-and-loading-libraries}{%
+\section{Installing Packages and Loading
+Libraries}\label{installing-packages-and-loading-libraries}}
+
+After you've downloaded \texttt{R} and RStudio, there's already plenty
+of functions that you can use. For example, the following code produces
+5 random draws from a standard Normal distribution (i.e., the
+distribution N(0,1)) and prints out the mean of those draws:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{draws }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(draws)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4954754
+\end{verbatim}
+
+Check the .Rmd file to see how I included \texttt{R} code within the
+.Rmd file.
+
+There are some functions that aren't automatically available in
+\texttt{R} but can quickly be made available by loading packages In
+\texttt{R}, packages are basically collections of functions. There are
+many packages automatically available in \texttt{R}; for example, the
+following code uses the \texttt{library()} function to load the
+\texttt{MASS} package:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(MASS)}
+\end{Highlighting}
+\end{Shaded}
+
+Unfortunately, there are many \texttt{R} packages that are not currently
+installed on your computer. For instance, throughout the class we'll
+extensively use the
+\href{https://www.tidyverse.org/}{\texttt{tidyverse}} suite of packages
+- which includes the popular data visualization package
+\texttt{ggplot2}. Try running the following line of code at the command
+line / Console in RStudio (\textbf{NOT in the .Rmd file}):
+
+\texttt{install.packages("tidyverse")}
+
+For many of you, this should work with no errors; for those of you who
+do get an error, we provide further instructions below that may help. If
+you are able to successfully install the \texttt{tidyverse} library, the
+following line of code should run within the .Rmd file (just delete the
+hastag \# and then try to Knit your .Rmd file):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.2 --
+## v ggplot2 3.3.6     v purrr   0.3.4
+## v tibble  3.1.8     v dplyr   1.0.9
+## v tidyr   1.2.0     v stringr 1.4.1
+## v readr   2.1.2     v forcats 0.5.2
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## x dplyr::select() masks MASS::select()
+\end{verbatim}
+
+\textbf{Important Note}: NEVER install new packages in a code block in
+an .Rmd file. Always install new packages at the command line / Console.
+That is, the \texttt{install.packages()} function should NEVER be in
+your submitted code. The \texttt{library()} function, however, should be
+in most of your submitted code: The \texttt{library()} function loads
+packages only after they are installed.
+
+If you're able to successfully run the above line of code, \textbf{you
+can skip} to the ``Posting to Gradescope'' section. If you were NOT able
+to successfully install the \texttt{tidyverse} using the
+\texttt{install.packages()} function, then skip ahead to the section
+``Further Steps for Installing Packages''.
+
+\hypertarget{posting-to-gradescope}{%
+\section{Posting to Gradescope}\label{posting-to-gradescope}}
+
+If you were able to successfully knit your .Rmd file with the
+\texttt{tidyverse} library loaded, you're ready to submit Demo0 to
+Gradescope! There's just one more caveat: \textbf{Gradescope only
+accepts PDFs and not HTML files}. So, take a moment to convert your HTML
+file to PDF by visiting an online file converter like
+\url{https://html2pdf.com/}, and then submit the resulting PDF to
+Gradescope. Alternatively, you can get RStudio to ``Knit to PDF'', but
+you need to install LaTeX on your computer to do this, which isn't
+required for the course, but it is slightly more convenient than using
+an online file converter. \href{https://www.latex-project.org/get/}{See
+here} for installing LaTeX on your computer, if you're interested. (More
+generally, LaTeX is a popular software to display mathematical equations
+on computers; LaTeX is pronounced ``lah-teck'' or ``lay-teck''.)
+
+\textbf{For ALL assignments, after you make a PDF, always make sure that
+your code, graphs, and answers are displayed on your PDF before
+submitting it to Gradescope.}
+
+\textbf{Note that your HTML file is in the same place where your .Rmd
+file is. So, look for where you downloaded this .Rmd file on your
+computer.}
+
+All of the following material is just ``bonus material'' for those
+curious about how to format RStudio and RMarkdown files.
+
+\hypertarget{optional-further-steps-for-installing-packages}{%
+\section{OPTIONAL: Further Steps for Installing
+Packages}\label{optional-further-steps-for-installing-packages}}
+
+\textbf{Remember, this section only applies to you if you were unable to
+install and load the \texttt{tidyverse} in the previous section}.
+
+In some cases (e.g., if you're using one of the CMU cluster computers),
+the package may not install. This happens because CMU does not allow us
+to install new packages to the default location. As a result, we have to
+specify a new directory where we can install new \texttt{R} packages.
+
+\textbf{If the \texttt{tidyverse} package installed with no issues, you
+can skip the following parts.} If you could not install the package,
+take the following steps:
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\tightlist
+\item
+  Create a new directory (i.e., folder) on your computer called
+  ``36-613'', and create a new sub-directory called ``packages''. The
+  filepath to this directory should be something like:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  ``C:/Users/YourName/Desktop/36-613/packages'' if you use Windows
+\item
+  ``/Users/YourName/Desktop/36-613/packages'' if you use Mac
+\item
+  ``\ldots{}'' if you are using the CMU cluster computers
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi}.}
+\setcounter{enumi}{1}
+\item
+  In a code block, store the filepath in an object called
+  \texttt{package\_path},
+  e.g.~\texttt{package\_path\ \textless{}-\ "/Users/YourName/Desktop/36-613/packages"}.
+  Repeat this at the command line / Console as well.
+\item
+  In the same code block, include the following line of code:
+  \texttt{.libPaths(c(package\_path,\ .libPaths()))}
+\item
+  At the command line / Console (NOT in a code block), type
+  \texttt{install.packages("tidyverse",\ lib\ =\ package\_path)}. This
+  should install the \texttt{tidyverse} package.
+\item
+  If you successfully installed the \texttt{tidyverse} library, try
+  running the \texttt{library(tidyverse)} code now. If you still run
+  into any issues, please post to Piazza describing your issue and we
+  will help you.
+\end{enumerate}
+
+\hypertarget{optional-formating-text-within-rstudio}{%
+\section{OPTIONAL: Formating Text within
+RStudio}\label{optional-formating-text-within-rstudio}}
+
+There are a lot of ways to format text within RStudio, e.g.,
+\emph{italics} and \textbf{bold} (just look at the .Rmd file to see how
+I did this).
+\href{https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf}{See
+here} for more tips/tricks on how to format things in R Markdown. As
+you'll see throughout this class (and especially your project at the end
+of the semester), well-formatted .html files can be a great way to
+showcase data science results to the public online.
+
+\hypertarget{optional-customizing-the-rstudio-user-interface}{%
+\section{OPTIONAL: Customizing the RStudio User
+Interface}\label{optional-customizing-the-rstudio-user-interface}}
+
+Within RStudio there are several panes that contain various things
+(Console, Help, Environment, History, Plots, etc). Here we discuss how
+you can customize how these panes are displayed.
+
+If you're using Mac, go to RStudio / Preferences / Pane Layout. If
+you're using Windows, go to Tools / Global Options. Change the menu
+options to arrange the panes as you see fit. Click Apply and OK.
+
+Now (still within the RStudio / Preferences menu), click Appearance and
+choose an appropriate font, font size, and theme. Click Apply and OK.
+Minimizing the bottom-left and bottom-right panes is a nice trick, which
+gives more vertical space to see your code and the output it's
+generating. (Minimize/maximize buttons are in the top-right of each
+pane.)
+
+\hypertarget{optional-additional-customization-advice}{%
+\section{OPTIONAL: Additional Customization
+Advice}\label{optional-additional-customization-advice}}
+
+\begin{itemize}
+\tightlist
+\item
+  Under Preferences / Code / Display, you might consider adding the
+  margin column and setting it to 80 characters, since most style guides
+  suggest that you should keep lines of code at 80 characters or less
+  when possible.
+\item
+  You can set your background color, font, font size, etc. under
+  Preferences / Appearance. (I use Cobalt). ``Dark displays'' are often
+  easier on the eyes and are environmentally-friendly in that they
+  conserve energy on devices. Of course, this is strictly a personal
+  preference, and people can get unnecessarily dogmatic about it, so you
+  should just choose something that you like.
+\item
+  Under Preferences / Packages, you can opt to change your CRAN mirror
+  to the ``Global (CDN) - RStudio'' option, as it is very reliable.
+\item
+  Under Preferences / Git / SVN, you can configure your version control
+  preferences. People often recommend using Git with RStudio for version
+  control purposes. The interface is easy to use even if you're a
+  beginner programmer or Git user.
+  \href{https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN}{This
+  link} and
+  \href{https://jennybc.github.io/2014-05-12-ubc/ubc-r/session03_git.html}{this
+  link} have more information on this, if you're interested.
+\end{itemize}
+
+\hypertarget{optional-r-primers-on-rstudio-cloud}{%
+\section{\texorpdfstring{OPTIONAL: \texttt{R} Primers on RStudio
+Cloud}{OPTIONAL: R Primers on RStudio Cloud}}\label{optional-r-primers-on-rstudio-cloud}}
+
+If you are struggling to install \texttt{R} and Rstudio on your
+computer, and/or having difficulties with installing the
+\texttt{tidyverse} then you \textbf{should make a free RStudio Cloud
+account at
+\href{https://rstudio.cloud/}{\texttt{https://rstudio.cloud/}}.} This is
+a free, browser-based version of \texttt{R} and RStudio that also
+provides access to a growing number of \texttt{R} tutorials / primers
+relevant to this course.
+
+After you create a RStudio Cloud account, click on the navigation menu
+by ``Your Workspace''. Then click on
+\href{https://rstudio.cloud/learn/primers}{``Primers''} to bring up a
+menu of tutorials, with code primers you can choose to work through.
+RStudio Cloud is a great practical alternative to use \textbf{in case we
+are unable to resolve errors with regards to installation on your own
+personal computer} (an unlikely scenario). We strongly encourage you to
+use an installed version of \texttt{R} and RStudio throughout the
+course, due to RStudio Cloud data limitations that are important for
+your projects at the end of the semester.
+
+\end{document}

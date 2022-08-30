@@ -409,7 +409,7 @@ produces 5 random draws from a standard Normal distribution (i.e., the
 distribution N(0,1)) and prints out the mean of those draws:</p>
 <pre class="r"><code>draws &lt;- rnorm(5)
 mean(draws)</code></pre>
-<pre><code>## [1] -0.1771467</code></pre>
+<pre><code>## [1] 0.1932252</code></pre>
 <p>Check the .Rmd file to see how I included <code>R</code> code within
 the .Rmd file.</p>
 <p>There are some functions that aren’t automatically available in
@@ -432,7 +432,16 @@ who do get an error, we provide further instructions below that may
 help. If you are able to successfully install the <code>tidyverse</code>
 library, the following line of code should run within the .Rmd file
 (just delete the hastag # and then try to Knit your .Rmd file):</p>
-<pre class="r"><code># library(tidyverse)</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+## ✔ tibble  3.1.8     ✔ dplyr   1.0.9
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.1
+## ✔ readr   2.1.2     ✔ forcats 0.5.2
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ✖ dplyr::select() masks MASS::select()</code></pre>
 <p><strong>Important Note</strong>: NEVER install new packages in a code
 block in an .Rmd file. Always install new packages at the command line /
 Console. That is, the <code>install.packages()</code> function should

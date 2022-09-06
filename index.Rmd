@@ -1,5 +1,5 @@
 ---
-title: "36-613: Data Visualization"
+title: "Data Visualization"
 description: |
   Companion website for the MSP Data Visualization course offered in Fall 2022 Mini 1 and taught by Professor Ron Yurko.
 site: distill::distill_website
@@ -25,6 +25,7 @@ Lecture slides are available below in html format, and the .Rmd files are linked
 |-----------|-----------------------------------------|-----------|-----------|
 | 1       | Introduction and the Grammar of Graphics | [`r icons::fontawesome$solid$laptop`](https://cmu-36613.netlify.app/slides/Lec1#1) | [`r icons::fontawesome$brands$github`](https://github.com/ryurko/DataViz-36613-Fall22/blob/main/slides/Lec1.Rmd) |
 | 2       | 1D Categorical Data | [`r icons::fontawesome$solid$laptop`](https://cmu-36613.netlify.app/slides/Lec2#1) | [`r icons::fontawesome$brands$github`](https://github.com/ryurko/DataViz-36613-Fall22/blob/main/slides/Lec2.Rmd) |
+| 3       | 2D Categorical Data | [`r icons::fontawesome$solid$laptop`](https://cmu-36613.netlify.app/slides/Lec3#1) | [`r icons::fontawesome$brands$github`](https://github.com/ryurko/DataViz-36613-Fall22/blob/main/slides/Lec3.Rmd) |
 
 ## R Demos
 
@@ -48,6 +49,8 @@ Additional `R` demos are available below in html format.
 -   ggplot2: Elegant Graphics for Data Analysis: <https://ggplot2-book.org/>
 
 -   Mastering Shiny: <https://mastering-shiny.org/index.html>
+
+-   The best resource for working with `git` and GitHub in `R` / RStudio: <https://happygitwithr.com/>
 
 ### More `ggplot2` resources
 
